@@ -20,22 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function displayProducts(products) {
+    
     productList.innerHTML = '';
     products.forEach(product => {
       const card = `
         <div class="product-card">
         <div class="badge-img">
           ${product.badge_text ? `<b class="badge">${product.badge_text}</b>` : ''}</div>
-
-          <img src="${product.image}" alt="${product.title}">
+         
+          <img src="${product.image}" alt="${(product.title )}">
 
           <div class="title">
-            <h3>${product.title}</h3>
+            <h3>${product.title.length > 20 ? product.title.slice(0,20) : product.title }</h3>
             <span>&#8226;${product.vendor}</span>
           </div>
           <div class="title">
-            <p>Rs: $${product.price * (100 - 25)/100}</p>
-            <p class="cross"><del>${product.price}.00<del></p>
+            <p>Rs: ${product.price}</p>
+            <p class="cross"><del>${product.compare_at_price}.00<del></p>
             <p class="off">50% Off</p></div>
           <button>Add To Cart</button>
         </div>
